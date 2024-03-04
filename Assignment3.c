@@ -22,7 +22,7 @@ TreeNode* createNode(char val) {
 
 // Function to check if a character is an operator
 bool isOperator(char ch) {
-    return ch == '+' || ch == '-' || ch == '*' || ch == '/';
+    return ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^';
 }
 
 // Function to get the precedence of an operator
@@ -37,6 +37,9 @@ int precedence(char ch) {
         return 0;
 }
 
+
+
+
 // Function to build the expression tree recursively
 TreeNode* buildTree(char* s, int start, int end) {
     if (start > end)
@@ -47,7 +50,9 @@ TreeNode* buildTree(char* s, int start, int end) {
     int level = 0;
 
     for (int i = start; i <= end; ++i) {
-        if (s[i] == '(')
+        if (s[i]==' ')
+            continue;
+        else if (s[i] == '(')
             level++;
         else if (s[i] == ')')
             level--;
